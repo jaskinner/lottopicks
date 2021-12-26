@@ -2,6 +2,8 @@ extends parts/layout
 
 block content
     h2 Picks 
+    p (refresh to get 5 new picks)
+    p Here's how many days it took to hit your picks in a test run: #{test}
     ul
         each val in picks
             li= val

@@ -3,14 +3,16 @@ var randomize = function (min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
   },
-  getNumber = function (arr) {
+  getNumber = function (arr, draw) {
     var getNewNum = randomize(1, 43);
-    if (checkTens(arr, getNewNum)) {
-      return false;
-    } else if (checkNext(arr, getNewNum)) {
-      return false;
-    } else if (outOfBounds(arr, getNewNum)) {
-      return false;
+    if (!draw) {
+      if (checkTens(arr, getNewNum)) {
+        return false;
+      } else if (checkNext(arr, getNewNum)) {
+        return false;
+      } else if (outOfBounds(arr, getNewNum)) {
+        return false;
+      }
     }
     return getNewNum;
   },
@@ -29,11 +31,11 @@ var randomize = function (min, max) {
   sumThisUp = function (accumulator, a) {
     return accumulator + a;
   },
-  createOneSet = function () {
+  createOneSet = function (draw) {
     arr = [];
 
-    while (arr.length < 5) {
-      var newNumber = getNumber(arr, false);
+    while (arr.length < 3) {
+      var newNumber = getNumber(arr, draw);
 
       if (checkDuplicates(arr, newNumber) && newNumber) {
         arr.push(newNumber);
@@ -51,34 +53,32 @@ var randomize = function (min, max) {
     return true;
   },
   getMyPicks = function (tix) {
-      var myPicks = [];
-      while (myPicks.length < tix) {
-        var newArr = createOneSet();
-        if (checkDuplicates(myPicks, newArr)) {
-          myPicks.push(newArr);
-        }
-      }
-      return myPicks;
-  },
-  fillParent = function () {
-    var parentArr = [];
-    var number = 0;
-    while (parentArr.length < 365 * 15) {
-      var newArr = createOneSet();
-      number += 1;
-      if (checkDuplicates(parentArr, newArr)) {
-        parentArr.push(newArr);
-      }
-      if (
-        containsAll([8, 13, 26, 30, 38], newArr) ||
-        containsAll([10, 16, 22, 33, 37], newArr) ||
-        containsAll([12, 14, 20, 33, 41], newArr)
-      ) {
-        console.log(number);
-        return false;
+    var myPicks = [];
+    while (myPicks.length < tix) {
+      var newArr = createOneSet(false);
+      if (checkDuplicates(myPicks, newArr)) {
+        myPicks.push(newArr);
       }
     }
-    return parentArr;
+    return myPicks;
+  },
+  checkPicksStats = function (pix) {
+    var days = 0;
+    var draw = 0;
+    var hit = false;
+    do {
+      days += 1;
+      draw = createOneSet(true)
+      for (pick of pix) {
+        if (containsAll(pick, draw)) {
+          hit = true
+        }
+      }
+    } while (!hit)
+    return days
   };
 
+// console.log(checkPicksStats(getMyPicks(5)))
+
 exports.getMyPicks = getMyPicks;
+exports.checkPicksStats = checkPicksStats;
