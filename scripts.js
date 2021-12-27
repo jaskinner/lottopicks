@@ -34,7 +34,7 @@ var randomize = function (min, max) {
   createOneSet = function (draw) {
     arr = [];
 
-    while (arr.length < 3) {
+    while (arr.length < 5) {
       var newNumber = getNumber(arr, draw);
 
       if (checkDuplicates(arr, newNumber) && newNumber) {
@@ -74,11 +74,9 @@ var randomize = function (min, max) {
           hit = true
         }
       }
-    } while (!hit)
+    } while (hit == false)
     return days
   };
-
-// console.log(checkPicksStats(getMyPicks(5)))
 
 exports.getMyPicks = getMyPicks;
 exports.checkPicksStats = checkPicksStats;
