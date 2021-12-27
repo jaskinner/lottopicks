@@ -5,9 +5,7 @@
   "main": "main.js",
   "scripts": {
     "watch": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js",
-    "build": "netlify-lambda build express"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +20,6 @@
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
-    "nodemon": "^2.0.15",
-    "netlify-lambda": "^0.4.0"
+    "nodemon": "^2.0.15"
   }
 }
