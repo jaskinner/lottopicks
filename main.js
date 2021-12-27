@@ -27,6 +27,11 @@ app.get("/picks/:tix", (req, res) => {
   res.render("picks", { title: siteName + "Picks", picks: picks, test: test })
 });
 
+app.get("/draw/:draw", (req, res) => {
+  var test = lotto.checkPicksStats(req.params.draw);
+  res.render("draw", { title: siteName + "Draw", draw: req.params.draw, test: test })
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

@@ -8,7 +8,7 @@ var randomize = function (min, max) {
     if (!draw) {
       if (checkTens(arr, getNewNum)) {
         return false;
-      } else if (checkNext(arr, getNewNum)) {
+      } else if (checkAdj(arr, getNewNum)) {
         return false;
       } else if (outOfBounds(arr, getNewNum)) {
         return false;
@@ -22,7 +22,7 @@ var randomize = function (min, max) {
   checkTens = function (arr, elm) {
     return arr.indexOf(elm - 10) != -1 || arr.indexOf(elm + 10) != -1;
   },
-  checkNext = function (arr, elm) {
+  checkAdj = function (arr, elm) {
     return arr.indexOf(elm - 1) != -1 || arr.indexOf(elm + 1) != -1;
   },
   outOfBounds = function (arr, elm) {
@@ -66,6 +66,9 @@ var randomize = function (min, max) {
     var days = 0;
     var draw = 0;
     var hit = false;
+
+    pix = typeof pix == 'string' ? [pix.split(',').map(Number)] : pix
+
     do {
       days += 1;
       draw = createOneSet(true)
