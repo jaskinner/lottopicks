@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "node main.js",
+    "build": "netlify-lambda build express"
   },
   "author": "",
   "license": "ISC",
