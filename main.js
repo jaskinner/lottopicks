@@ -10,7 +10,7 @@ const siteName = "Client Portal - ";
 app.use('/static', express.static(path.join(__dirname, "public")));
 
 dotenv.config();
-const port = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.options("*", cors());
@@ -32,6 +32,6 @@ app.get("/draw/:draw", (req, res) => {
   res.render("draw", { title: siteName + "Draw", draw: req.params.draw, test: test })
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`);
 });
