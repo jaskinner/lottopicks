@@ -19,7 +19,13 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
     "dotenv": "^10.0.0",
+    "eslint": "^8.6.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "nodemon": "^2.0.15"
   }
 }
