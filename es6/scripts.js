@@ -18,26 +18,22 @@ var randomize = (min, max) => {
     }
     return getNewNum;
   },
-  checkDuplicates = (arr, elm) => {
-    return arr.indexOf(elm) == -1;
-  },
-  checkTens = (arr, elm) => {
-    return arr.indexOf(elm - 10) != -1 || arr.indexOf(elm + 10) != -1;
-  },
-  checkAdj = (arr, elm) => {
-    return arr.indexOf(elm - 1) != -1 || arr.indexOf(elm + 1) != -1;
-  },
-  outOfBounds = (arr, elm) => {
-    arr.reduce(sumThisUp, 0) + elm < 86 || arr.reduce(sumThisUp, 0) + elm > 129;
-  },
-  sumThisUp = (accumulator, a) => {
-    return accumulator + a;
-  },
+
+  checkDuplicates = (arr, elm) => arr.indexOf(elm) == -1,
+
+  checkTens = (arr, elm) => arr.indexOf(elm - 10) != -1 || arr.indexOf(elm + 10) != -1,
+
+  checkAdj = (arr, elm) => arr.indexOf(elm - 1) != -1 || arr.indexOf(elm + 1) != -1,
+
+  outOfBounds = (arr, elm) => arr.reduce(sumThisUp, 0) + elm < 86 || arr.reduce(sumThisUp, 0) + elm > 129,
+
+  sumThisUp = (accumulator, a) => accumulator + a,
+
   createOneSet = draw => {
-    let arr = [];
+    var arr = [];
 
     while (arr.length < 5) {
-      var newNumber = getNumber(arr, draw);
+      const newNumber = getNumber(arr, draw);
 
       if (checkDuplicates(arr, newNumber) && newNumber) {
         arr.push(newNumber);
@@ -49,15 +45,15 @@ var randomize = (min, max) => {
     });
   },
   containsAll = (needles, haystack) => {
-    for (var i = 0; i < needles.length; i++) {
-      if (haystack.indexOf(needles[i]) == -1) return false;
+    for (let i = 0; i < needles.length; i++) {
+      return haystack.indexOf(needles[i]) == -1;
     }
     return true;
   },
   getMyPicks = tix => {
-    let myPicks = [];
+    var myPicks = [];
     while (myPicks.length < tix) {
-      var newArr = createOneSet(false);
+      const newArr = createOneSet(false);
       if (checkDuplicates(myPicks, newArr)) {
         myPicks.push(newArr);
       }
@@ -79,7 +75,7 @@ var randomize = (min, max) => {
           hit = true
         }
       }
-    } while (hit == false)
+    } while (!hit)
     return days
   };
 
