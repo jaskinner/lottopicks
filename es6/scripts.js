@@ -55,7 +55,7 @@ var randomize = (min, max) => {
     return true;
   },
   getMyPicks = tix => {
-    var myPicks = [];
+    let myPicks = [];
     while (myPicks.length < tix) {
       var newArr = createOneSet(false);
       if (checkDuplicates(myPicks, newArr)) {
@@ -74,7 +74,7 @@ var randomize = (min, max) => {
     do {
       days += 1;
       draw = createOneSet(true)
-      for (pick of pix) {
+      for (let pick of pix) {
         if (containsAll(pick, draw)) {
           hit = true
         }
