@@ -7,10 +7,14 @@ gulp.task('default', function () {
         .pipe(eslint())
         .pipe(eslint.format());
     gulp.src("es6/**/*.js")
-        .pipe(babel())
+        .pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
         .pipe(gulp.dest("dist"));
 
     gulp.src("public/es6/**/*.js")
-        .pipe(babel())
+        .pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
         .pipe(gulp.dest("public/dist"));
 });
