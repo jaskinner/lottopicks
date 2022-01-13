@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const path = require("path");
-const lotto = require("./scripts");
+const lotto = require("./dist/scripts");
 
 const siteName = "Client Portal - ";
 
