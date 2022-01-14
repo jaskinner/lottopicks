@@ -1,12 +1,10 @@
-'use strict'
-
-var randomize = (min, max) => {
+let randomize = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
   },
   getNumber = (arr, draw) => {
-    var getNewNum = randomize(1, 43);
+    let getNewNum = randomize(1, 43);
     if (!draw) {
       if (checkTens(arr, getNewNum)) {
         return false;
@@ -30,7 +28,7 @@ var randomize = (min, max) => {
   sumThisUp = (accumulator, a) => accumulator + a,
 
   createOneSet = draw => {
-    var arr = [];
+    let arr = [];
 
     while (arr.length < 5) {
       const newNumber = getNumber(arr, draw);
@@ -51,7 +49,7 @@ var randomize = (min, max) => {
     return true;
   },
   getMyPicks = tix => {
-    var myPicks = [];
+    let myPicks = [];
     while (myPicks.length < tix) {
       const newArr = createOneSet(false);
       if (checkDuplicates(myPicks, newArr)) {
@@ -61,9 +59,9 @@ var randomize = (min, max) => {
     return myPicks;
   },
   checkPicksStats = pix => {
-    var days = 0;
-    var draw = 0;
-    var hit = false;
+    let days = 0;
+    let draw = 0;
+    let hit = false;
 
     pix = typeof pix == 'string' ? [pix.split(',').map(Number)] : pix
 
