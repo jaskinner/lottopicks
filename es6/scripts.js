@@ -62,16 +62,12 @@ const createOneSet = (draw) => {
   });
 };
 
-// const containsAll = (needles, haystack) => {
-//   for (let i = 0; i < needles.length; i++) {
-//     try {
-//       return haystack.indexOf(needles[i]) == -1;
-//     } catch (error) {
-//       console.log(`You have an error: ${error}`);
-//     }
-//   }
-//   return true;
-// };
+const containsAll = (needles, haystack) => {
+  for (let i = 0; i < needles.length; i++) {
+    if (haystack.indexOf(needles[i]) == -1) return false;
+  }
+  return true;
+};
 
 const getMyPicks = (tix) => {
   let myPicks = [];
@@ -85,21 +81,19 @@ const getMyPicks = (tix) => {
 };
 
 const checkPicksStats = (pix) => {
-  return pix
-  // let days = 0;
+  let days = 0;
 
-  // pix = typeof pix == "string" ? [pix.split(",").map(Number)] : pix;
+  pix = typeof pix == "string" ? [pix.split(",").map(Number)] : pix;
 
-  // while (true) {
-  //   days++;
-  //   let draw = createOneSet(true);
-  //   for (let pick of pix) {
-  //     if (containsAll(pick, draw)) {
-  //       return days
-  //     }
-  //   }
-  // }
+  do {
+    days++;
+    let draw = createOneSet(true);
+    for (let pick of pix) {
+      if (containsAll(pick, draw)) {
+        return days
+      }
+    }
+  } while (true);
 };
-
 exports.checkPicksStats = checkPicksStats;
 exports.getMyPicks = getMyPicks;
