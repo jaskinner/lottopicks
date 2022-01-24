@@ -5,6 +5,10 @@
     "private": true,
     "author": "Jon Skinner",
     "main": "index.js",
+    "scripts": {
+        "watch": "nodemon src/index.js",
+        "start": "node src/index.js"
+    },
     "dependencies": {
         "express": "^4.17.2"
     },
@@ -12,11 +16,10 @@
         "@babel/preset-env": "^7.16.11",
         "babel": "^6.23.0",
         "eslint": "^8.7.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-plugin-import": "^2.25.4",
         "gulp": "^4.0.2",
         "gulp-babel": "^8.0.0",
-        "gulp-eslint": "^6.0.0"
+        "gulp-eslint": "^6.0.0",
+        "nodemon": "^2.0.15"
     },
     "eslintConfig": {
         "env": {
@@ -33,5 +36,8 @@
         "presets": [
             "@babel/preset-env"
         ]
+    },
+    "prettier": {
+        "tabWidth": 4
     }
 }
